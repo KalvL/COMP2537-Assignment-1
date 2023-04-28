@@ -15,7 +15,7 @@ const app = express();
 const Joi = require("joi");
 
 
-const expireTime = 24 * 60 * 60 * 1000; //expires after 1 day  (hours * minutes * seconds * millis)
+const expireTime = 1 * 60 * 60 * 1000; //expires after 1 day  (hours * minutes * seconds * millis)
 
 /* secret information section */
 const mongodb_host = process.env.MONGODB_HOST;
@@ -190,9 +190,9 @@ app.post('/submitUser', async (req,res) => {
 
         await userCollection.insertOne({ username: username, email: email, password: hashedPassword });
         console.log("Inserted user");
-
-        var html = "successfully created user";
-        res.send(html);
+        req.session.authenticated = true;
+        req.session.username = username;
+        res.redirect('/members');
         return;
     } else {
         if (!username) {
@@ -286,7 +286,7 @@ app.get('/logout', (req,res) => {
 
 app.get('/members', (req,res) => {
     if (req.session.authenticated) {
-        let html = `<p>Hello ${req.session.username}<p><br>`;
+        let html = `<p>Hello, ${req.session.username}<p><br>`;
         // var cat = req.params.id;
         let cat = Math.floor(Math.random() * 3) + 1;
 
