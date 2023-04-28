@@ -322,3 +322,29 @@ app.get("*", (req,res) => {
 app.listen(port, () => {
 	console.log("Node application listening on port "+port);
 }); 
+
+
+// {
+//     "name": "demo",
+//         "version": "1.0.0",
+//             "description": "v1.0 - Simple Website using Node.js\r ===================================",
+//                 "main": "index.js",
+//                     "scripts": {
+//         "test": "echo \"Error: no test specified\" && exit 1",
+//             "start": "node index.js",
+//                 "build": "npm update && webpack"
+//     },
+//     "author": "",
+//         "license": "ISC",
+//             "dependencies": {
+//         "bcrypt": "^5.1.0",
+//             "connect-mongo": "^4.6.0",
+//                 "connect-mongodb-session": "^3.1.1",
+//                     "dotenv": "^16.0.3",
+//                         "express": "^4.18.2",
+//                             "express-session": "^1.17.3",
+//                                 "joi": "^17.8.4",
+//                                     "mongodb": "^5.3.0",
+//                                         "nodemon": "^2.0.22"
+//     }
+// }
